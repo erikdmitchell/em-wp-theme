@@ -11,6 +11,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <?php emdotnet_theme_post_thumbnail(); ?>
     <header class="entry-header">
         <?php
         if ( is_single() ) :
