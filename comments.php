@@ -5,8 +5,8 @@
  * The area of the page that contains comments and the comment form.
  *
  * @package WordPress
- * @subpackage emdotnet
- * @since emdotnet 1.0.0
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
  */
 
 /*
@@ -25,7 +25,7 @@ if ( post_password_required() ) {
     <h2 class="comments-title">
         <?php
             printf(
-                _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'emdotnet' ),
+                _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'emwptheme' ),
                 number_format_i18n( get_comments_number() ),
                 get_the_title()
             );
@@ -34,9 +34,9 @@ if ( post_password_required() ) {
 
         <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
     <nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-        <h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'emdotnet' ); ?></h1>
-        <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'emdotnet' ) ); ?></div>
-        <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'emdotnet' ) ); ?></div>
+        <h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'emwptheme' ); ?></h1>
+        <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'emwptheme' ) ); ?></div>
+        <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'emwptheme' ) ); ?></div>
     </nav><!-- #comment-nav-above -->
     <?php endif; // Check for comment navigation. ?>
 
@@ -54,14 +54,14 @@ if ( post_password_required() ) {
 
         <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
     <nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-        <h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'emdotnet' ); ?></h1>
-        <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'emdotnet' ) ); ?></div>
-        <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'emdotnet' ) ); ?></div>
+        <h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'emwptheme' ); ?></h1>
+        <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'emwptheme' ) ); ?></div>
+        <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'emwptheme' ) ); ?></div>
     </nav><!-- #comment-nav-below -->
     <?php endif; // Check for comment navigation. ?>
 
         <?php if ( ! comments_open() ) : ?>
-    <p class="no-comments"><?php _e( 'Comments are closed.', 'emdotnet' ); ?></p>
+    <p class="no-comments"><?php _e( 'Comments are closed.', 'emwptheme' ); ?></p>
     <?php endif; ?>
 
     <?php endif; // have_comments() ?>

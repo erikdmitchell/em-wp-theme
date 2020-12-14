@@ -1,4 +1,7 @@
-.comments-area {
+.paging-navigation,
+.post-navigation {
+    display: flex;
+    justify-content: center;
 	padding-left: 15px;
 	padding-right: 15px;
 	margin: 0 1rem 1.5rem;
@@ -19,18 +22,9 @@
     a:visited {
         text-decoration: none;
         color: #777;
-    } 
-    
-    .comments-title,
-    .comment-body {
-        word-wrap: break-word;
-    }  
+    }
 }
 
-.comment-content a {
-	word-wrap: break-word;
-}
-
-.bypostauthor {
-	display: block;
+.post-navigation {
+    display: block;
 }

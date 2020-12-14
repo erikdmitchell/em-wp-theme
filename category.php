@@ -6,8 +6,8 @@
  * For example, puts together date-based pages if no date.php file exists.
  *
  * @package WordPress
- * @subpackage emdotnet
- * @since emdotnet 1.0.0
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
  */
 ?>
 <?php get_header(); ?>
@@ -24,7 +24,7 @@
         <?php get_template_part( 'template-parts/content' ); ?>
     <?php endwhile; ?>
 
-    <?php emdotnet_theme_paging_nav(); // Previous/next post navigation. ?>
+    <?php emwptheme_theme_paging_nav(); // Previous/next post navigation. ?>
 
 <?php else : ?>
     <?php get_template_part( 'template-parts/content', 'none' ); ?>

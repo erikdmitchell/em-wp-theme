@@ -7,31 +7,31 @@
  * hooks in WordPress to change core functionality.
  *
  * @package WordPress
- * @subpackage emdotnet
- * @since emdotnet 1.0.0
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
  */
 
 /**
  * Set our global variables for theme options.
  *
- * @since emdotnet 1.0.0
+ * @since emwptheme 0.1.0
  */
-if ( ! isset( $emdotnet_theme_options ) ) {
-    $emdotnet_theme_options = array( 'option_name' => 'emdotnet_theme_options' );
+if ( ! isset( $emwptheme_theme_options ) ) {
+    $emwptheme_theme_options = array( 'option_name' => 'emwptheme_theme_options' );
 }
 
-if ( ! isset( $emdotnet_theme_options_tabs ) ) {
-    $emdotnet_theme_options_tabs = array();
+if ( ! isset( $emwptheme_theme_options_tabs ) ) {
+    $emwptheme_theme_options_tabs = array();
 }
 
-if ( ! isset( $emdotnet_theme_options_hooks ) ) {
-    $emdotnet_theme_options_hooks = array();
+if ( ! isset( $emwptheme_theme_options_hooks ) ) {
+    $emwptheme_theme_options_hooks = array();
 }
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
- * @since emdotnet 1.0.0
+ * @since emwptheme 0.1.0
  */
 if ( ! isset( $content_width ) ) {
     $content_width = 1200;
@@ -44,9 +44,9 @@ if ( ! isset( $content_width ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  *
- * @since emdotnet 1.0.0
+ * @since emwptheme 0.1.0
  */
-function emdotnet_theme_setup() {
+function emwptheme_theme_setup() {
     /**
      * add our theme support options
      */
@@ -81,7 +81,7 @@ function emdotnet_theme_setup() {
     // register our navigation area
     register_nav_menus(
         array(
-            'primary' => __( 'Primary Menu', 'emdotnet' ),
+            'primary' => __( 'Primary Menu', 'emwptheme' ),
         )
     );
 
@@ -91,14 +91,14 @@ function emdotnet_theme_setup() {
     add_editor_style( 'css/editor-style.css' );
 
 }
-add_action( 'after_setup_theme', 'emdotnet_theme_setup' );
+add_action( 'after_setup_theme', 'emwptheme_theme_setup' );
 
 /**
  * Register widget area.
  *
- * @since emdotnet 1.0.0
+ * @since emwptheme 0.1.0
  */
-function emdotnet_theme_widgets_init() {
+function emwptheme_theme_widgets_init() {
     register_sidebar(
         array(
             'name' => 'Footer 1',
@@ -121,20 +121,17 @@ function emdotnet_theme_widgets_init() {
         )
     );
 }
-add_action( 'widgets_init', 'emdotnet_theme_widgets_init' );
+add_action( 'widgets_init', 'emwptheme_theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  *
- * @since emdotnet 1.0.0
+ * @since emwptheme 0.1.0
  */
-function emdotnet_theme_scripts() {
+function emwptheme_theme_scripts() {
     global $wp_scripts;
 
-    // enqueue our scripts for slider and theme
-    // wp_enqueue_script( 'jquery' );
-    // wp_enqueue_script( 'jquery-actual-script', get_template_directory_uri() . '/inc/js/jquery.actual.min.js', array( 'jquery' ), '1.0.16', true );
-    wp_enqueue_script( 'emdotnet-theme-script', get_template_directory_uri() . '/js/emdotnet-theme.min.js', array( 'jquery' ), '1.2.0', true );
+    wp_enqueue_script( 'emwptheme-theme-script', get_template_directory_uri() . '/js/emwptheme-theme.min.js', array( 'jquery' ), '1.2.0', true );
 
     if ( is_singular() ) :
         wp_enqueue_script( 'comment-reply' );
@@ -153,16 +150,9 @@ function emdotnet_theme_scripts() {
     $wp_scripts->add_data( 'respond-script', 'conditional', 'lt IE 9' );
 
     // enqueue font awesome and our main stylesheet.
-    wp_enqueue_style( 'font-awesome-style', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '5.15.1' );
-    wp_enqueue_style( 'emdotnet-theme-style', get_stylesheet_uri() );
-
-    /*
-    if ( is_front_page() ) {
-        wp_enqueue_script( 'emdotnet-front-page-script', get_stylesheet_directory_uri() . '/js/front-page.min.js' );
-    }
-    */
+    wp_enqueue_style( 'emwptheme-theme-style', get_stylesheet_uri() );
 }
-add_action( 'wp_enqueue_scripts', 'emdotnet_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'emwptheme_theme_scripts' );
 
 /**
  * Display an optional post thumbnail.
@@ -170,12 +160,12 @@ add_action( 'wp_enqueue_scripts', 'emdotnet_theme_scripts' );
  * Wraps the post thumbnail in an anchor element on index
  * views, or a div element when on single views.
  *
- * @since emdotnet 1.0
+ * @since emwptheme 1.0
  * @based on twentyfourteen
  *
  * @return void
  */
-function emdotnet_theme_post_thumbnail( $size = 'full' ) {
+function emwptheme_theme_post_thumbnail( $size = 'full' ) {
     global $post;
 
     $html = null;
@@ -197,7 +187,7 @@ function emdotnet_theme_post_thumbnail( $size = 'full' ) {
         $html .= '</a>';
     endif;
 
-    $image = apply_filters( 'emdotnet_theme_post_thumbnail', $html, $size, $attr );
+    $image = apply_filters( 'emwptheme_theme_post_thumbnail', $html, $size, $attr );
 
     echo $image;
 }
@@ -205,14 +195,14 @@ function emdotnet_theme_post_thumbnail( $size = 'full' ) {
 /**
  * Print HTML with meta information for the current post-date/time and author.
  *
- * @since emdotnet 1.0
+ * @since emwptheme 1.0
  * @based on twentyfourteen
  *
  * @return void
  */
-function emdotnet_theme_posted_on() {
+function emwptheme_theme_posted_on() {
     if ( is_sticky() && is_home() && ! is_paged() ) {
-        echo '<span class="featured-post"><span class="glyphicon glyphicon-pushpin"></span>' . __( 'Sticky', 'emdotnet' ) . '</span>';
+        echo '<span class="featured-post"><span class="glyphicon glyphicon-pushpin"></span>' . __( 'Sticky', 'emwptheme' ) . '</span>';
     }
 
     // Set up and print post meta information. -- hide date if sticky
@@ -225,12 +215,12 @@ function emdotnet_theme_posted_on() {
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
- * @since emdotnet 1.0
+ * @since emwptheme 1.0
  * @based on twentyfourteen
  *
  * @return void
  */
-function emdotnet_theme_paging_nav() {
+function emwptheme_theme_paging_nav() {
     // Don't print empty markup if there's only one page.
     if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
         return;
@@ -260,8 +250,8 @@ function emdotnet_theme_paging_nav() {
             'current'  => $paged,
             'mid_size' => 1,
             'add_args' => array_map( 'urlencode', $query_args ),
-            'prev_text' => __( '&laquo; Previous', 'emdotnet' ),
-            'next_text' => __( 'Next &raquo;', 'emdotnet' ),
+            'prev_text' => __( '&laquo; Previous', 'emwptheme' ),
+            'next_text' => __( 'Next &raquo;', 'emwptheme' ),
         )
     );
 
@@ -279,12 +269,12 @@ function emdotnet_theme_paging_nav() {
 /**
  * Display navigation to next/previous post when applicable.
  *
- * @since emdotnet 1.0.1
+ * @since emwptheme 1.0.1
  * @based on twentyfourteen
  *
  * @return void
  */
-function emdotnet_theme_post_nav() {
+function emwptheme_theme_post_nav() {
     // Don't print empty markup if there's nowhere to navigate.
     $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
     $next     = get_adjacent_post( false, '', false );
@@ -298,10 +288,10 @@ function emdotnet_theme_post_nav() {
         <div class="nav-links">
             <?php
             if ( is_attachment() ) :
-                previous_post_link( __( '<div class="published-in"><span class="meta-nav">Published In:</span> %link</div>', 'emdotnet' ), '%title' );
+                previous_post_link( __( '<div class="published-in"><span class="meta-nav">Published In:</span> %link</div>', 'emwptheme' ), '%title' );
             else :
-                previous_post_link( __( '<div class="prev-post"><span class="meta-nav">Previous Post:</span> %link</div>', 'emdotnet' ), '%title' );
-                next_post_link( __( '<div class="next-post"><span class="meta-nav">Next Post:</span> %link</div>', 'emdotnet' ), '%title' );
+                previous_post_link( __( '<div class="prev-post"><span class="meta-nav">Previous Post:</span> %link</div>', 'emwptheme' ), '%title' );
+                next_post_link( __( '<div class="next-post"><span class="meta-nav">Next Post:</span> %link</div>', 'emwptheme' ), '%title' );
             endif;
             ?>
         </div><!-- .nav-links -->
@@ -343,13 +333,13 @@ function display_meta_description() {
  * @access public
  * @return void
  */
-function emdotnet_theme_navbar_brand() {
-    global $emdotnet_theme_options;
+function emwptheme_theme_navbar_brand() {
+    global $emwptheme_theme_options;
 
     $text = get_bloginfo( 'name' );
 
-    if ( isset( $emdotnet_theme_options['default']['logo']['text'] ) && $emdotnet_theme_options['default']['logo']['text'] != '' ) {
-        $text = $emdotnet_theme_options['default']['logo']['text'];
+    if ( isset( $emwptheme_theme_options['default']['logo']['text'] ) && $emwptheme_theme_options['default']['logo']['text'] != '' ) {
+        $text = $emwptheme_theme_options['default']['logo']['text'];
     }
 
     // display header image or text //
@@ -361,22 +351,22 @@ function emdotnet_theme_navbar_brand() {
 }
 
 /**
- * emdotnet_back_to_top function.
+ * emwptheme_back_to_top function.
  *
  * @access public
  * @return void
  */
-function emdotnet_back_to_top() {
+function emwptheme_back_to_top() {
     $html = null;
 
-    $html .= '<a href="#0" class="emdotnet-back-to-top"></a>';
+    $html .= '<a href="#0" class="emwptheme-back-to-top"></a>';
 
     echo $html;
 }
-add_action( 'wp_footer', 'emdotnet_back_to_top' );
+add_action( 'wp_footer', 'emwptheme_back_to_top' );
 
 /**
- * emdotnet_wp_parse_args function.
+ * emwptheme_wp_parse_args function.
  *
  * Similar to wp_parse_args() just a bit extended to work with multidimensional arrays
  *
@@ -385,13 +375,13 @@ add_action( 'wp_footer', 'emdotnet_back_to_top' );
  * @param mixed $b
  * @return void
  */
-function emdotnet_wp_parse_args( &$a, $b ) {
+function emwptheme_wp_parse_args( &$a, $b ) {
     $a = (array) $a;
     $b = (array) $b;
     $result = $b;
     foreach ( $a as $k => &$v ) {
         if ( is_array( $v ) && isset( $result[ $k ] ) ) {
-            $result[ $k ] = emdotnet_wp_parse_args( $v, $result[ $k ] );
+            $result[ $k ] = emwptheme_wp_parse_args( $v, $result[ $k ] );
         } else {
             $result[ $k ] = $v;
         }
@@ -472,7 +462,7 @@ function get_post_excerpt_by_id( $post, $length = 10, $tags = '<a><em><strong>',
     return apply_filters( 'the_content', $the_excerpt );
 }
 
-function emdotnet_has_categories( $excl = '' ) {
+function emwptheme_has_categories( $excl = '' ) {
     global $post;
 
     $categories = get_the_category( $post->ID );
@@ -495,7 +485,7 @@ function emdotnet_has_categories( $excl = '' ) {
     return false;
 }
 
-function emdotnet_post_categories( $spacer = ' ', $excl = '' ) {
+function emwptheme_post_categories( $spacer = ' ', $excl = '' ) {
     global $post;
 
     $categories = get_the_category( $post->ID );

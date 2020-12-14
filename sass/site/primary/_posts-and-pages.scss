@@ -4,6 +4,7 @@
 
 .post {
 	margin: 0 0 1.5em;
+	word-wrap: break-word;
 }
 
 .updated:not(.published) {
@@ -17,7 +18,6 @@
 .footer-content {
 	padding-left: 15px;
 	padding-right: 15px;
-    
 	margin: 0 1rem;
 	max-width: calc(100% - 2rem);
 	
@@ -54,10 +54,8 @@
 .entry-header,
 .archive-header {
     color: #000;
-
 	padding-left: 15px;
 	padding-right: 15px;
-    
 	margin: 0 1rem;
 	max-width: calc(100% - 2rem);
 	
@@ -81,10 +79,8 @@
 
 .page-header .entry-header {
     color: #000;
-
 	padding-left: 0;
 	padding-right: 0;
-    
 	margin: 0;
 	max-width: 100%;
 	
@@ -106,6 +102,22 @@
     }
 }
 
+.entry-header .entry-meta {
+	padding-left: 0;
+	padding-right: 0;
+	margin: 0;
+	max-width: 100%;
+	
+	@media only screen and (min-width: 768px) {
+		margin: 0;
+		max-width: 100%;
+	}
+	
+	@media only screen and (min-width: 1500px) {
+		margin: 0;
+		max-width: 100%;
+	}
+}
 
 .entry-meta {
     color: #000;
@@ -118,16 +130,7 @@
     }
 }
 
-/**
- * archive.php
- */
-.archive {
-    article {
-        a,
-        a:hover,
-        a:visited {
-            text-decoration: none;
-            color: #777;
-        }       
-    }
+.post-thumbnail {
+    display: flex;
+    justify-content: center;  
 }
