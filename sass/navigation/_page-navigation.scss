@@ -1,4 +1,5 @@
-.paging-navigation {
+.paging-navigation,
+.post-navigation {
     display: flex;
     justify-content: center;
 	padding-left: 15px;
@@ -22,18 +23,8 @@
         text-decoration: none;
         color: #777;
     }
-        
-    .pagination {
-        .page-numbers {
-            &.current {
-                
-            }
-            
-            &.next {
-                
-            }
-            
-            .dots {}
-        }
-    }
+}
+
+.post-navigation {
+    display: block;
 }
