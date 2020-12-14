@@ -130,16 +130,7 @@
     }
 }
 
-/**
- * archive.php
- */
-.archive {
-    article {
-        a,
-        a:hover,
-        a:visited {
-            text-decoration: none;
-            color: #777;
-        }       
-    }
+.post-thumbnail {
+    display: flex;
+    justify-content: center;  
 }
