@@ -5,13 +5,13 @@
  * Used for both single and index/archive/search. -- Currently page.php and index.php
  *
  * @package WordPress
- * @subpackage emdotnet
- * @since emdotnet 1.0.0
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
  */
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php emdotnet_theme_post_thumbnail(); ?>
+    <?php emwptheme_theme_post_thumbnail(); ?>
     <header class="entry-header">
         <?php
         if ( is_single() ) :
@@ -24,16 +24,16 @@
         <div class="entry-meta">
             <?php
             if ( 'post' == get_post_type() ) {
-                emdotnet_theme_posted_on();
+                emwptheme_theme_posted_on();
             }
 
             if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
                 ?>
-                    <span class="comments-link"></span><?php comments_popup_link( __( 'Leave a comment', 'emdotnet' ), __( '1 Comment', 'emdotnet' ), __( '% Comments', 'emdotnet' ) ); ?></span>
+                    <span class="comments-link"></span><?php comments_popup_link( __( 'Leave a comment', 'emwptheme' ), __( '1 Comment', 'emwptheme' ), __( '% Comments', 'emwptheme' ) ); ?></span>
                 <?php
                 endif;
 
-                edit_post_link( __( 'Edit', 'emdotnet' ), '<span class="edit-link">', '</span>' );
+                edit_post_link( __( 'Edit', 'emwptheme' ), '<span class="edit-link">', '</span>' );
             ?>
         </div><!-- .entry-meta -->
     </header><!-- .entry-header -->
@@ -45,10 +45,10 @@
     <?php else : ?>
     <div class="entry-content">
         <?php
-            the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'emdotnet' ) );
+            the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'emwptheme' ) );
             wp_link_pages(
                 array(
-                    'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'emdotnet' ) . '</span>',
+                    'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'emwptheme' ) . '</span>',
                     'after'       => '</div>',
                     'link_before' => '<span>',
                     'link_after'  => '</span>',
@@ -66,12 +66,12 @@
                 <?php the_tags( '<div class="tag-links">', ' ', '</div>' ); ?>
             </div>
         <?php endif; ?>
-        <?php if ( emdotnet_has_categories() ) : ?>
+        <?php if ( emwptheme_has_categories() ) : ?>
             <div class="categories-list">
                 <div class="categories-title">Categories</div>
             
                 <div class="categories-link">
-                    <?php emdotnet_post_categories( ' ', 1 ); ?>
+                    <?php emwptheme_post_categories( ' ', 1 ); ?>
                 </div>
             </div>
         <?php endif; ?>

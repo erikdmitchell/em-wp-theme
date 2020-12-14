@@ -12,7 +12,7 @@
         }
         ?>
     <?php endwhile; ?>
-    <?php emdotnet_theme_paging_nav(); // Previous/next post navigation. ?>
+    <?php emwptheme_theme_paging_nav(); // Previous/next post navigation. ?>
 
 <?php
 get_footer();

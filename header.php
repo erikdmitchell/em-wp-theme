@@ -12,7 +12,7 @@
 
     <header id="masthead" class="site-header clearfix">
         <div class="site-branding">
-            <?php emdotnet_theme_navbar_brand(); ?>
+            <?php emwptheme_theme_navbar_brand(); ?>
         </div><!-- .site-branding -->
 
         <nav id="site-navigation" class="main-navigation">

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="page-header">
-    <?php emdotnet_theme_post_thumbnail(); ?>
+    <?php emwptheme_theme_post_thumbnail(); ?>
 
     <header class="entry-header">
         <?php
@@ -45,7 +45,7 @@ if ( have_posts() ) :
     </article><!-- #post-## -->
     <!-- // Previous/next post navigation. NEEDS TO BE ADDED -->
                 <?php endwhile; else : ?>
-    <p><?php _e( 'Sorry, this page does not exist.', 'emdotnet' ); ?></p>
+    <p><?php _e( 'Sorry, this page does not exist.', 'emwptheme' ); ?></p>
 <?php endif; ?>
         
 

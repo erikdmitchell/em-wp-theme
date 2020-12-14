@@ -24,7 +24,7 @@ jQuery(document).ready(function($){
 		//duration of the top scrolling animation (in ms)
 		scroll_top_duration = 700,
 		//grab the "back to top" link
-		$back_to_top = $('.emdotnet-back-to-top');
+		$back_to_top = $('.emwptheme-back-to-top');
 
 	//hide or show the "back to top" link
 	$(window).scroll(function(){
