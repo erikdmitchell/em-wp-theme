@@ -6,6 +6,7 @@
  * @subpackage emwptheme
  * @since emwptheme 0.1.0
  */
+ 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -23,12 +24,7 @@
 
         <footer class="entry-footer">
             <?php emwptheme_theme_meta(); ?>
-            <?php edit_post_link( __( 'Edit', 'emwptheme' ), '<span class="edit-link">', '</span>' ); ?>
         </footer><!-- .entry-footer -->
-
-    <?php else : ?>
-
-        <?php edit_post_link( __( 'Edit', 'emwptheme' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 
     <?php endif; ?>
 
