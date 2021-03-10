@@ -36,7 +36,8 @@ Coming soon...
 
 = 0.2.0 =
 
- * Updated SASS so all colors are variables
+ * Enhancement - SASS so all colors are variables
+ * Enhancement - updated emwptheme-theme.js jQuery compatability
 
 = 0.1.0 =
 
