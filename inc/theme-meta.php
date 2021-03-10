@@ -22,7 +22,7 @@ function emwptheme_theme_meta() {
     echo wp_kses_post( apply_filters( 'emwptheme_meta_http-equiv', '<meta http-equiv="X-UA-Compatible" content="IE=edge">' . "\n" ) );
     echo wp_kses_post( apply_filters( 'emwptheme_meta_viewport', '<meta name="viewport" content="width=device-width, initial-scale=1.0">' . "\n" ) );
     echo wp_kses_post( apply_filters( 'emwptheme_meta_description', '<meta name="description" content="' . display_meta_description() . '">' . "\n" ) );
-    echo wp_kses_post( apply_filters( 'emwptheme_meta_author', '<meta name="author" content="">' . "\n" );
+    echo wp_kses_post( apply_filters( 'emwptheme_meta_author', '<meta name="author" content="">' . "\n" ) );
 
 }
 add_action( 'wp_head', 'emwptheme_theme_meta', 1 );
@@ -49,7 +49,7 @@ add_action( 'wp_head', 'emwptheme_disable_seo_meta', 0 );
  * Simply returns a null value so no description is output
  *
  * @access public
- * @param mixed $meta
+ * @param mixed $meta (string)
  * @return null
  */
 function disable_emwptheme_meta_description( $meta ) {

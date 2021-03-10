@@ -1,3 +1,13 @@
+<?php
+/**
+ * Theme header.
+ *
+ * @package WordPress
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
+ */
+
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

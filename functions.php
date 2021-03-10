@@ -28,6 +28,10 @@ if ( ! isset( $emwptheme_theme_options_hooks ) ) {
     $emwptheme_theme_options_hooks = array();
 }
 
+// define some vars.
+$theme = wp_get_theme();
+define( 'EMWPTHEME_VERSION', $theme->Version );
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
@@ -48,7 +52,7 @@ if ( ! isset( $content_width ) ) {
  */
 function emwptheme_theme_setup() {
     /**
-     * add our theme support options
+     * Add our theme support options
      */
     $custom_header_args = array(
         'width' => 163,
@@ -68,17 +72,17 @@ function emwptheme_theme_setup() {
     add_theme_support( 'align-wide' );
 
     /**
-     * add our image size(s)
+     * Add our image size(s)
      */
     add_image_size( 'navbar-logo', 163, 100, true );
 
     /**
-     * include theme meta page
-     * allows users to hook and filter into the default meta tags in the header
+     * Include theme meta page
+     * Allows users to hook and filter into the default meta tags in the header
      */
     include_once( get_template_directory() . '/inc/theme-meta.php' );
 
-    // register our navigation area
+    // register our navigation area.
     register_nav_menus(
         array(
             'primary' => __( 'Primary Menu', 'emwptheme' ),
@@ -131,7 +135,7 @@ add_action( 'widgets_init', 'emwptheme_theme_widgets_init' );
 function emwptheme_theme_scripts() {
     global $wp_scripts;
 
-    wp_enqueue_script( 'emwptheme-theme-script', get_template_directory_uri() . '/js/emwptheme-theme.min.js', array( 'jquery' ), '1.2.0', true );
+    wp_enqueue_script( 'emwptheme-theme-script', get_template_directory_uri() . '/js/emwptheme-theme.min.js', array( 'jquery' ), EMWPTHEME_VERSION, true );
 
     if ( is_singular() ) :
         wp_enqueue_script( 'comment-reply' );
@@ -142,15 +146,15 @@ function emwptheme_theme_scripts() {
      * <!--[if lt IE 9]> ... <![endif]-->
      * <!--[if lte IE 8]> ... <![endif]-->
      */
-    // HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries //
+    // HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries.
     wp_register_script( 'html5shiv-script', get_template_directory_uri() . '/inc/js/html5shiv.min.js', array(), '3.7.3-pre' );
     wp_register_script( 'respond-script', get_template_directory_uri() . '/inc/js/respond.min.js', array(), '1.4.2' );
 
     $wp_scripts->add_data( 'html5shiv-script', 'conditional', 'lt IE 9' );
     $wp_scripts->add_data( 'respond-script', 'conditional', 'lt IE 9' );
 
-    // enqueue font awesome and our main stylesheet.
-    wp_enqueue_style( 'emwptheme-theme-style', get_stylesheet_uri() );
+    // enqueue our main stylesheet.
+    wp_enqueue_style( 'emwptheme-style', get_stylesheet_uri(), '', EMWPTHEME_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'emwptheme_theme_scripts' );
 
@@ -189,7 +193,7 @@ function emwptheme_theme_post_thumbnail( $size = 'full' ) {
 
     $image = apply_filters( 'emwptheme_theme_post_thumbnail', $html, $size, $attr );
 
-    echo $image;
+    echo wp_kses_post( $image );
 }
 
 /**
@@ -202,14 +206,15 @@ function emwptheme_theme_post_thumbnail( $size = 'full' ) {
  */
 function emwptheme_theme_posted_on() {
     if ( is_sticky() && is_home() && ! is_paged() ) {
-        echo '<span class="featured-post"><span class="glyphicon glyphicon-pushpin"></span>' . __( 'Sticky', 'emwptheme' ) . '</span>';
+        echo wp_kses_post( '<span class="featured-post"><span class="glyphicon glyphicon-pushpin"></span>' . __( 'Sticky', 'emwptheme' ) . '</span>' );
     }
 
-    // Set up and print post meta information. -- hide date if sticky
+    // Set up and print post meta information. -- hide date if sticky.
     if ( ! is_sticky() ) :
-        echo '<span class="entry-date"><span class="glyphicon glyphicon-time"></span><a href="' . get_permalink() . '" rel="bookmark"><time class="entry-date" datetime="' . get_the_date( 'c' ) . '">' . get_the_date() . '</time></a></span>';
+        echo wp_kses_post( '<span class="entry-date"><span class="glyphicon glyphicon-time"></span><a href="' . get_permalink() . '" rel="bookmark"><time class="entry-date" datetime="' . get_the_date( 'c' ) . '">' . get_the_date() . '</time></a></span>' );
     endif;
-    echo '<span class="byline"><span class="glyphicon glyphicon-user"></span><span class="author vcard"><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author">' . get_the_author() . '</a></span></span>';
+
+    echo wp_kses_post( '<span class="byline"><span class="glyphicon glyphicon-user"></span><span class="author vcard"><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '" rel="author">' . get_the_author() . '</a></span></span>' );
 }
 
 /**
@@ -250,8 +255,8 @@ function emwptheme_theme_paging_nav() {
             'current'  => $paged,
             'mid_size' => 1,
             'add_args' => array_map( 'urlencode', $query_args ),
-            'prev_text' => __( '&laquo; Previous', 'emwptheme' ),
-            'next_text' => __( 'Next &raquo;', 'emwptheme' ),
+            'prev_text' => esc_html_e( '&laquo; Previous', 'emwptheme' ),
+            'next_text' => esc_html_e( 'Next &raquo;', 'emwptheme' ),
         )
     );
 
@@ -259,7 +264,7 @@ function emwptheme_theme_paging_nav() {
         ?>
         <nav class="navigation paging-navigation" role="navigation">
             <div class="pagination loop-pagination">
-                <?php echo $links; ?>
+                <?php echo wp_kses_post( $links ); ?>
             </div><!-- .pagination -->
         </nav><!-- .navigation -->
         <?php
@@ -300,12 +305,12 @@ function emwptheme_theme_post_nav() {
 }
 
 /**
- * display_meta_description function.
+ * Display meta description.
  *
- * a custom function to display a meta description for our site pages
+ * A custom function to display a meta description for our site pages
  *
  * @access public
- * @return void
+ * @return string/bool
  */
 function display_meta_description() {
     global $post;
@@ -326,9 +331,9 @@ function display_meta_description() {
 }
 
 /**
- * mdw_theme_navbar_brand function.
+ * Navbar.
  *
- * adds our logo or text based on theme options
+ * Adds our logo or text based on theme options
  *
  * @access public
  * @return void
@@ -338,20 +343,20 @@ function emwptheme_theme_navbar_brand() {
 
     $text = get_bloginfo( 'name' );
 
-    if ( isset( $emwptheme_theme_options['default']['logo']['text'] ) && $emwptheme_theme_options['default']['logo']['text'] != '' ) {
+    if ( isset( $emwptheme_theme_options['default']['logo']['text'] ) && '' != $emwptheme_theme_options['default']['logo']['text'] ) {
         $text = $emwptheme_theme_options['default']['logo']['text'];
     }
 
-    // display header image or text //
+    // display header image or text.
     if ( get_header_image() ) :
-        echo '<img src="' . get_header_image() . '" height="' . get_custom_header()->height . '" width="' . get_custom_header()->width . '" alt="" />';
+        echo wp_kses_post( '<img src="' . get_header_image() . '" height="' . get_custom_header()->height . '" width="' . get_custom_header()->width . '" alt="" />' );
     else :
-        echo '<a class="navbar-brand" href="' . home_url() . '">' . $text . '</a>';
+        echo wp_kses_post( '<a class="navbar-brand" href="' . home_url() . '">' . $text . '</a>' );
     endif;
 }
 
 /**
- * emwptheme_back_to_top function.
+ * Bacok to top button
  *
  * @access public
  * @return void
@@ -361,19 +366,19 @@ function emwptheme_back_to_top() {
 
     $html .= '<a href="#0" class="emwptheme-back-to-top"></a>';
 
-    echo $html;
+    echo esc_html( $html );
 }
 add_action( 'wp_footer', 'emwptheme_back_to_top' );
 
 /**
- * emwptheme_wp_parse_args function.
+ * Custom parse args function.
  *
  * Similar to wp_parse_args() just a bit extended to work with multidimensional arrays
  *
  * @access public
- * @param mixed &$a
- * @param mixed $b
- * @return void
+ * @param mixed &$a (array).
+ * @param mixed $b (array).
+ * @return array
  */
 function emwptheme_wp_parse_args( &$a, $b ) {
     $a = (array) $a;
@@ -390,11 +395,11 @@ function emwptheme_wp_parse_args( &$a, $b ) {
 }
 
 /**
- * get_terms_list function.
+ * Get terms lis.
  *
  * @access public
- * @param bool $term (default: false)
- * @return void
+ * @param bool $term (default: false).
+ * @return string/bool
  */
 function get_terms_list( $term = false ) {
     if ( ! $term ) {
@@ -432,15 +437,15 @@ function get_terms_list( $term = false ) {
 /**
  * Gets the excerpt of a specific post ID or object
  *
- * @param - $post - object/int - the ID or object of the post to get the excerpt of
- * @param - $length - int - the length of the excerpt in words
- * @param - $tags - string - the allowed HTML tags. These will not be stripped out
- * @param - $extra - string - text to append to the end of the excerpt
+ * @param - $post - object/int - the ID or object of the post to get the excerpt of.
+ * @param - $length - int - the length of the excerpt in words.
+ * @param - $tags - string - the allowed HTML tags. These will not be stripped out.
+ * @param - $extra - string - text to append to the end of the excerpt.
  */
 function get_post_excerpt_by_id( $post, $length = 10, $tags = '<a><em><strong>', $extra = ' . . .' ) {
 
     if ( is_int( $post ) ) {
-        // get the post object of the passed ID
+        // get the post object of the passed ID.
         $post = get_post( $post );
     } elseif ( ! is_object( $post ) ) {
         return false;
@@ -462,6 +467,13 @@ function get_post_excerpt_by_id( $post, $length = 10, $tags = '<a><em><strong>',
     return apply_filters( 'the_content', $the_excerpt );
 }
 
+/**
+ * Has categories.
+ *
+ * @access public
+ * @param string $excl (default: '').
+ * @return bool
+ */
 function emwptheme_has_categories( $excl = '' ) {
     global $post;
 
@@ -485,6 +497,14 @@ function emwptheme_has_categories( $excl = '' ) {
     return false;
 }
 
+/**
+ * Post categories.
+ *
+ * @access public
+ * @param string $spacer (default: ' ').
+ * @param string $excl (default: '').
+ * @return void
+ */
 function emwptheme_post_categories( $spacer = ' ', $excl = '' ) {
     global $post;
 
@@ -508,7 +528,7 @@ function emwptheme_post_categories( $spacer = ' ', $excl = '' ) {
 
                 $thecount--;
 
-                echo $html;
+                echo wp_kses_post( $html );
             }
         endforeach;
     endif;
