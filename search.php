@@ -6,6 +6,7 @@
  * @subpackage emwptheme
  * @since emwptheme 0.1.0
  */
+
 ?>
 <?php get_header(); ?>
 
