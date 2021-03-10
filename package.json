@@ -28,7 +28,7 @@
     "gulp-imagemin": "",
     "gulp-jsbeautifier": "^3.0.0",
     "gulp-jshint": "^2.0.4",
-    "gulp-load-plugins": "",
+    "gulp-load-plugins": "^2.0.6",
     "gulp-newer": "",
     "gulp-notify": "",
     "gulp-phpcbf": "^0.1.2",
@@ -36,18 +36,16 @@
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^9.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "",
     "gulp-util": "",
     "gulp-zip": "^3.2.0",
-    "jshint": "",
+    "jshint": "^2.12.0",
     "jshint-stylish": "",
     "run-sequence": "",
     "stylelint": "^10.1.0"
   },
-  "dependencies": {
-    "gulp-sourcemaps": "^2.6.5"
-  }
+  "dependencies": {}
 }
