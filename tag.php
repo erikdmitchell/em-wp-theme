@@ -16,7 +16,7 @@
         <header class="archive-header">
             <h1 class="archive-title"><?php printf( esc_html_e( 'Tag Archives: %s', 'emwptheme' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 
-            <?php if ( tag_description() ) : // Show an optional tag description ?>
+            <?php if ( tag_description() ) : // Show an optional tag description. ?>
                 <div class="archive-meta"><?php echo tag_description(); ?></div>
             <?php endif; ?>
         </header><!-- .archive-header -->
