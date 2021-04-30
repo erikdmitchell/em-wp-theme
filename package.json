@@ -46,6 +46,5 @@
     "jshint-stylish": "",
     "run-sequence": "",
     "stylelint": "^10.1.0"
-  },
-  "dependencies": {}
+  }
 }

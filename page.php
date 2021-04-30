@@ -1,3 +1,14 @@
+<?php
+/**
+ * The template for a page
+ *
+ * @package WordPress
+ * @subpackage emwptheme
+ * @since emwptheme 0.1.0
+ */
+
+?>
+
 <?php get_header(); ?>
 
 <div class="page-header">
@@ -28,10 +39,10 @@ if ( have_posts() ) :
         <?php else : ?>
         <div class="entry-content">
             <?php
-                the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'wpbootstrap' ) );
+                the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'emwptheme' ) );
                 wp_link_pages(
                     array(
-                        'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'wpbootstrap' ) . '</span>',
+                        'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'emwptheme' ) . '</span>',
                         'after'       => '</div>',
                         'link_before' => '<span>',
                         'link_after'  => '</span>',
@@ -45,7 +56,7 @@ if ( have_posts() ) :
     </article><!-- #post-## -->
     <!-- // Previous/next post navigation. NEEDS TO BE ADDED -->
                 <?php endwhile; else : ?>
-    <p><?php _e( 'Sorry, this page does not exist.', 'emwptheme' ); ?></p>
+    <p><?php esc_html_e( 'Sorry, this page does not exist.', 'emwptheme' ); ?></p>
 <?php endif; ?>
         
 
