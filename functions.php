@@ -366,7 +366,7 @@ function emwptheme_back_to_top() {
 
     $html .= '<a href="#0" class="emwptheme-back-to-top"></a>';
 
-    echo esc_html( $html );
+    echo $html;
 }
 add_action( 'wp_footer', 'emwptheme_back_to_top' );
 
