@@ -95,7 +95,7 @@ function emwptheme_theme_setup() {
     add_editor_style( 'css/editor-style.css' );
 
 }
-add_action( 'after_setup_theme', 'emwptheme_theme_setup' );
+//add_action( 'after_setup_theme', 'emwptheme_theme_setup' );
 
 /**
  * Register widget area.
@@ -125,7 +125,7 @@ function emwptheme_theme_widgets_init() {
         )
     );
 }
-add_action( 'widgets_init', 'emwptheme_theme_widgets_init' );
+//add_action( 'widgets_init', 'emwptheme_theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -156,7 +156,7 @@ function emwptheme_theme_scripts() {
     // enqueue our main stylesheet.
     wp_enqueue_style( 'emwptheme-style', get_stylesheet_uri(), '', EMWPTHEME_VERSION );
 }
-add_action( 'wp_enqueue_scripts', 'emwptheme_theme_scripts' );
+//add_action( 'wp_enqueue_scripts', 'emwptheme_theme_scripts' );
 
 /**
  * Display an optional post thumbnail.
@@ -538,8 +538,6 @@ function emwptheme_post_categories( $spacer = ' ', $excl = '' ) {
 
 
 
-
-<?php
 /**
  * Functions and definitions
  *
