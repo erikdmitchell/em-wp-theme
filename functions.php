@@ -20,42 +20,42 @@
  * @return void
  */
 function emwpt_blocks_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on emwpt Blocks, use a find and replace
-	 * to change 'emwpt-blocks' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'emwpt-blocks', get_template_directory() . '/languages' );
+    /*
+     * Make theme available for translation.
+     * Translations can be filed in the /languages/ directory.
+     * If you're building a theme based on emwpt Blocks, use a find and replace
+     * to change 'emwpt-blocks' to the name of your theme in all the template files.
+     */
+    load_theme_textdomain( 'emwpt-blocks', get_template_directory() . '/languages' );
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
-	add_theme_support( 'post-thumbnails' );
-	//set_post_thumbnail_size( 1568, 9999 );
-	add_image_size( 'navbar-logo', 163, 100, true );
+    /*
+     * Enable support for Post Thumbnails on posts and pages.
+     *
+     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+     */
+    add_theme_support( 'post-thumbnails' );
+    // set_post_thumbnail_size( 1568, 9999 );
+    add_image_size( 'navbar-logo', 163, 100, true );
 
-	// Add support for Block Styles.
-	add_theme_support( 'wp-block-styles' );
+    // Add support for Block Styles.
+    add_theme_support( 'wp-block-styles' );
 
-	// Add support for editor styles.
-	add_theme_support( 'editor-styles' );
+    // Add support for editor styles.
+    add_theme_support( 'editor-styles' );
 
-	// Enqueue editor styles.
-	add_editor_style(
-		array(
-			'./assets/css/blocks.css',
-			'./assets/css/style-shared.css',
-		)
-	);
+    // Enqueue editor styles.
+    add_editor_style(
+        array(
+            './assets/css/blocks.css',
+            './assets/css/style-shared.css',
+        )
+    );
 
-	// Add support for responsive embedded content.
-	add_theme_support( 'responsive-embeds' );
+    // Add support for responsive embedded content.
+    add_theme_support( 'responsive-embeds' );
 }
 add_action( 'after_setup_theme', 'emwpt_blocks_setup' );
 
@@ -67,7 +67,7 @@ add_action( 'after_setup_theme', 'emwpt_blocks_setup' );
  * @return void
  */
 function emwpt_blocks_scripts() {
-	wp_enqueue_style( 'emwpt-blocks-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+    wp_enqueue_style( 'emwpt-blocks-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 }
 add_action( 'wp_enqueue_scripts', 'emwpt_blocks_scripts' );
 
@@ -79,7 +79,7 @@ add_action( 'wp_enqueue_scripts', 'emwpt_blocks_scripts' );
  * @return void
  */
 function emwpt_blocks_block_editor_script() {
-	wp_enqueue_script( 'emwpt-blocks-unregister-block-style', get_theme_file_uri( '/assets/js/unregister-block-style.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
+    wp_enqueue_script( 'emwpt-blocks-unregister-block-style', get_theme_file_uri( '/assets/js/unregister-block-style.js' ), array( 'wp-blocks', 'wp-dom' ), wp_get_theme()->get( 'Version' ), true );
 }
 add_action( 'enqueue_block_editor_assets', 'emwpt_blocks_block_editor_script' );
 
