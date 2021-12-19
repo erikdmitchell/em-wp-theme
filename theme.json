@@ -153,12 +153,12 @@
         },        
         {
           "name": "Large",
-          "size": "1.5",
+          "size": "1.5rem",
           "slug": "large"
         },
         {
           "name": "Extra Large",
-          "size": "2.5",
+          "size": "2.5rem",
           "slug": "extra-large"
         }
       ],
