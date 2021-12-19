@@ -6,7 +6,7 @@ Author: Erik Mitchell
 Author URI: http://erikmitchell.net
 Version: 1.0.0
 Tags: 
-Text Domain: emwptheme
+Text Domain: emwpt
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -15,8 +15,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 # Shared Styles
 --------------------------------------------------------------*/
 
-@import "assets/css/style-shared.css";
-@import "assets/css/blocks.css";
+/* @import "assets/css/style-shared.css"; */
+/* @import "assets/css/blocks.css"; */
 
 /*--------------------------------------------------------------
 # Defaults
