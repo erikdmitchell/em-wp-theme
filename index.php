@@ -1,28 +1,10 @@
 <?php
 /**
- * The default file to dislpay posts, pages, etc.
+ * Without this file, WordPress will consider the theme broken.
  *
- * @package WordPress
- * @subpackage emwptheme
- * @since emwptheme 0.1.0
+ * @package emwpt-blocks
  */
 
-?>
-<?php get_header(); ?>
-
-    <?php
-    while ( have_posts() ) :
-        the_post();
-        ?>
-        <?php get_template_part( 'template-parts/content' ); ?>
-        <?php
-        // If comments are open or we have at least one comment, load up the comment template.
-        if ( comments_open() || get_comments_number() ) {
-            comments_template();
-        }
-        ?>
-    <?php endwhile; ?>
-    <?php emwptheme_theme_paging_nav(); // Previous/next post navigation. ?>
-
-<?php
-get_footer();
+if ( current_user_can( 'activate_plugins' ) ) {
+    esc_html_e( 'This theme was built for the WordPress experimental full site editing feature. You need to install and activate the Gutenberg plugin to make it work. ', 'emwpt' );
+}
