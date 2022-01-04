@@ -16,7 +16,7 @@ if ( function_exists( 'register_block_style' ) ) {
      *
      * @return void
      */
-    function twenty_twenty_one_register_block_styles() {
+    function emwpt_register_block_styles() {
         // Columns: Overlap.
         register_block_style(
             'core/columns',
@@ -89,5 +89,5 @@ if ( function_exists( 'register_block_style' ) ) {
             )
         );
     }
-    add_action( 'init', 'twenty_twenty_one_register_block_styles' );
+    add_action( 'init', 'emwpt_register_block_styles' );
 }
